@@ -1,6 +1,4 @@
-import Exceptions.InvalidEmailFormatException;
-import Exceptions.InvalidPasswordFormatException;
-import Exceptions.UserOtherThanTestException;
+package Exceptions;
 
 import java.util.regex.PatternSyntaxException;
 

@@ -1,7 +1,4 @@
-import Exceptions.InvalidEmailFormatException;
-import Exceptions.InvalidLoginException;
-import Exceptions.InvalidPasswordFormatException;
-import Exceptions.UserOtherThanTestException;
+package Exceptions;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,7 +6,7 @@ import java.util.logging.Logger;
 public class Main {
     public static void main(String[] args) {
         LoginSystem loginSystem = new LoginSystem();
-        //Example of a chained exception where the root cause for InvalidPasswordFormat is PatternSyntaxException
+        //Example of a chained exception where the root cause for InvalidPasswordFormat
         try {
             InvalidLoginException invalidLoginException = new InvalidLoginException("First exception we get thrown");
             invalidLoginException.initCause(new InvalidPasswordFormatException("Actual reason it failed"));
@@ -29,7 +26,7 @@ public class Main {
 
         //RuntimeException gets thrown if user for example during the login enters creds that are not in the system
         try {
-            loginSystem.login("WillThrow", "password123");
+            loginSystem.login("Test1", "x");
 
         } catch (InvalidLoginException ex) {
             System.out.println(ex);
@@ -49,7 +46,7 @@ public class Main {
         New way is using a multicatch block ex. catch(Exception1 e1| Exception2 e2| ExceptionN en){...}
          */
         try {
-            User userUsernameBad = new User("Test", "PSsrw12@", "Test90test");
+            User userUsernameBad = new User("Test", "PSsrw12@", "Test90@test.com");
             //Both the username and the email are invalid which means we can get 2 exceptions
         } catch (InvalidEmailFormatException | UserOtherThanTestException exception) {
             if (exception.equals(InvalidEmailFormatException.class))
@@ -83,4 +80,14 @@ Questions in Topics part
     throw: With this keyword we can throw an exception
     throws: It's used in declaring exceptions. It pretty much says that there may be an exception thrown in the method
     public int division(int a, int b) throws ArithmeticException{...}
+
+
+    Testing:
+1.	Annotations
+
+2.	Assertions (fails)
+3.	Code coverage
+4.	Junit 4 vs 5
+5.	Mockito, PowerMock, EasyMock
+
  */
