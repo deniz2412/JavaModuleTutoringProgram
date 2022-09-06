@@ -1,6 +1,4 @@
-import Exceptions.InvalidLoginException;
-import Exceptions.NoPasswordFragmentException;
-import Exceptions.NoUserException;
+package Exceptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +14,10 @@ public class LoginSystem {
         userList.add(user);
     }
 
-    public void login(String username, String password) throws InvalidLoginException {
+    public String login(String username, String password) throws InvalidLoginException {
         for (User user : userList) {
             if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-                return;
+                return "Login is good";
             }
 
         }
@@ -27,22 +25,19 @@ public class LoginSystem {
     }
 
 
-    public String resetPassword(String username, String passwordFragment, String newPassword) throws NoUserException {
-        for (User user : userList) {
-            if (username.equals(user.getUsername())) {
-                if (user.getPassword().contains(passwordFragment)) {
-                    user.setPassword(newPassword);
+    public String resetPassword(String username, String passwordFragment, String newPassword) {
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getUsername() == username) {
+                if (userList.get(i).getPassword().contains(passwordFragment)) {
+                    userList.get(i).setPassword(newPassword);
                     return "Password set to new password";
-                } else {
-                    throw new NoPasswordFragmentException("Password fragment is not matching your current password");
-                }
+                } else
+                    return "Password fragment is not matching your current password";
             } else {
-                throw new NoUserException("Unknown user");
+                return "Unknown user";
             }
         }
-
-
-        return "Password reset";
+        return null;
     }
 
     public void printDB() {
@@ -58,7 +53,7 @@ public class LoginSystem {
             if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
                 userList.remove(i);
             } else {
-                throw new NoUserException("User not in the list");
+                throw new NoUserException("Exceptions.User not in the list");
             }
         }
     }
