@@ -1,22 +1,22 @@
 package UnitTestSegment;
 
+import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 public class Library {
     public List<Book> listofBooks = new ArrayList<>();
     public double damageFeeCoeff = 1;
 
-    public Library() {
-    }
-
     public String checkForDamage(Book book) {
-
+        Integer damageStatus;
         if (listofBooks.contains(book)) {
-            Integer damageStatus = book.getDamagePercentage();
-            if (damageStatus <= 0 || damageStatus >= 101)
+            damageStatus = book.getDamagePercentage();
+            if (damageStatus < 0 || damageStatus >= 101)
                 throw new InvalidBookStatusException("You cant provide a negative damage status/ damage status above 100");
-            else if (damageStatus <= 10)
+            else if (damageStatus >= 0 && damageStatus <= 10)
                 return "Printing press new";
             else if (damageStatus > 10 && damageStatus <= 20)
                 return "Minimal wear";
@@ -35,13 +35,11 @@ public class Library {
                 listofBooks.remove(book);
                 return "You destroyed the book what are you even returning";
             }
-            return "Damage Calc";
-        } else
-            throw new BookNotInLibraryException("You have the wrong library");
+        }
+        throw new BookNotInLibraryException("You have the wrong library");
     }
 
     public double returnBook(Book book) {
-
         if (listofBooks.contains(book)) {
             float leasePrice = book.getLendingFee();
             Integer daysLeased = book.getDaysLent();
@@ -61,11 +59,9 @@ public class Library {
             } else if (daysLeased > 100) {
                 System.out.println("You are more than 100 days late why bother returning it");
                 return leasePrice * damageFeeCoeff + 100 * leasePrice;
-            } else {
-                return -1;
             }
-        } else
-            throw new BookNotInLibraryException("You have the wrong library");
+        }
+        throw new BookNotInLibraryException("You have the wrong library");
     }
 }
 
