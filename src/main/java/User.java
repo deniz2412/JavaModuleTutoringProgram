@@ -41,7 +41,7 @@ public class User {
 
     }
 
-    public boolean isValidUser() throws InvalidUserException {
+    public boolean isValidUser() {
         try {
             try {
                 checkEmail(getEmail());

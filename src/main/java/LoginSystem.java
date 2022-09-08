@@ -1,6 +1,7 @@
 
 import Exceptions.NoPasswordFragmentException;
 import Exceptions.NoUserException;
+import Exceptions.UserAlreadyinListException;
 import Exceptions.WrongPasswordException;
 import lombok.NoArgsConstructor;
 
@@ -21,7 +22,7 @@ public class LoginSystem {
         if (user.isValidUser() && !userInList(user)) {
             userList.add(user);
         } else {
-            System.out.println("Failed to add user to List");
+            throw new UserAlreadyinListException("User is already in list");
         }
     }
 
@@ -42,12 +43,12 @@ public class LoginSystem {
     }
 
 
-    public void resetPassword(User user, String passwordFragment, String newPassword) throws NoPasswordFragmentException, NoUserException {
+    public String resetPassword(User user, String passwordFragment, String newPassword) throws NoPasswordFragmentException, NoUserException {
         if (userInList(user)) {
             User user1 = userList.get(userList.indexOf(user));
             if (user1.getPassword().contains(passwordFragment)) {
                 user1.setPassword(newPassword);
-                System.out.println("Password set to new password");
+                return "Password set to new password";
             } else {
                 throw new NoPasswordFragmentException("Password fragment is not matching your current password");
             }
@@ -56,24 +57,19 @@ public class LoginSystem {
         }
     }
 
-    public void printDB() {
-        for (User user : userList) {
-            System.out.println(user.getUsername() + "\t" + user.getEmail());
-        }
-
-    }
-
     public void deleteFromList(User user, String password) throws NoUserException, WrongPasswordException {
         if (userInList(user)) {
             if (password.equals(user.getPassword())) {
-                userList.remove(userList.indexOf(user));
+                userList.remove(user);
+                return;
             } else {
                 throw new WrongPasswordException("Wrong Password, try again");
             }
         }
         throw new NoUserException("User not in the list");
     }
+    }
 
 
-}
+
 

@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) {
+
         LoginSystem loginSystem = new LoginSystem();
         Logger logger = Logger.getLogger(Main.class.getName());
         User userGood = new User("Test", "PSsrw12@", "Test@Test.com");
@@ -13,14 +14,14 @@ public class Main {
         User userInvalidEmail = new User("Test", "PSsrw12@", "Tester");
         User userInvalidUser = new User("Zed", "PSsrw12@", "Test@Test.com");
 
-        /*
+
         userInvalidPW.isValidUser();
         userInvalidEmail.isValidUser();
         userInvalidUser.isValidUser();
-        loginSystem.addToList(userInvalidUser);
+        loginSystem.userList.add(userInvalidUser);
         System.out.println(loginSystem.userList.size());
-*/
-        loginSystem.addToList(userGood);
+
+        loginSystem.userList.add(userGood);
 
         try {
             loginSystem.login(userGood.getUsername(), userGood.getPassword()); //In list
@@ -42,7 +43,7 @@ public class Main {
             loginSystem.deleteFromList(userInvalidEmail, "PSsr13@"); // not in list
         } catch (NoUserException | WrongPasswordException exception) {
             logger.warning(exception.getMessage());
-            loginSystem.printDB();
+            logger.info(loginSystem.userList.toString());
         }
 
 
