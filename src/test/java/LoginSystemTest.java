@@ -13,7 +13,7 @@ class LoginSystemTest {
 
     User mockUser = Mockito.mock(User.class);
     User mockUser2 = Mockito.mock(User.class);
-    LoginSystem loginSystem = new LoginSystem();
+    private LoginSystem loginSystem = new LoginSystem();
 
     @BeforeEach
     void BeforeTest() {
