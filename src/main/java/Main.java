@@ -1,6 +1,6 @@
-import Exceptions.NoPasswordFragmentException;
-import Exceptions.NoUserException;
-import Exceptions.WrongPasswordException;
+import exceptions.NoPasswordFragmentException;
+import exceptions.NoUserException;
+import exceptions.WrongPasswordException;
 
 import java.util.logging.Logger;
 
@@ -64,7 +64,7 @@ public class Main {
 
 /*
 Questions in Topics part
-    Exceptions
+    exceptions
 1.	What they are?
     It's an event of some sort that disrupts the flow of the program it is implemented as an object which is thrown at runtime
 2.	What kinds of exceptions exist?

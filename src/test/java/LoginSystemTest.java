@@ -1,7 +1,7 @@
-import Exceptions.NoPasswordFragmentException;
-import Exceptions.NoUserException;
-import Exceptions.UserAlreadyinListException;
-import Exceptions.WrongPasswordException;
+import exceptions.NoPasswordFragmentException;
+import exceptions.NoUserException;
+import exceptions.UserAlreadyinListException;
+import exceptions.WrongPasswordException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

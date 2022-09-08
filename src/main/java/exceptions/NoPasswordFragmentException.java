@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 public class NoPasswordFragmentException extends RuntimeException {
     public NoPasswordFragmentException(String str) {

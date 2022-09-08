@@ -1,7 +1,8 @@
-import Exceptions.InvalidEmailFormatException;
-import Exceptions.InvalidPasswordFormatException;
-import Exceptions.InvalidUserException;
-import Exceptions.UserOtherThanTestException;
+import exceptions.InvalidEmailFormatException;
+import exceptions.InvalidPasswordFormatException;
+import exceptions.InvalidUserException;
+import exceptions.UserOtherThanTestException;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,17 +11,13 @@ import java.util.logging.Logger;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class User {
     private final Logger logger = Logger.getLogger(User.class.getName());
     private String username;
     private String password;
     private String email;
 
-    public User(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
 
     private void checkEmail(String email) throws InvalidEmailFormatException {
         if (!(email.contains("@") && email.contains(".com")))
