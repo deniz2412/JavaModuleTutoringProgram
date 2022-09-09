@@ -1,8 +1,8 @@
 
-import Exceptions.NoPasswordFragmentException;
-import Exceptions.NoUserException;
-import Exceptions.UserAlreadyinListException;
-import Exceptions.WrongPasswordException;
+import exceptions.NoPasswordFragmentException;
+import exceptions.NoUserException;
+import exceptions.UserAlreadyinListException;
+import exceptions.WrongPasswordException;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;

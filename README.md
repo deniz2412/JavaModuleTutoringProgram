@@ -1,1 +1,1 @@
-Ovdje su Exceptions i Testing assignmenti, grane nisu vise u upotrebi
+Ovdje su exceptions i Testing assignmenti, grane nisu vise u upotrebi

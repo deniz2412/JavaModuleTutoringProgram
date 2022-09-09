@@ -1,7 +1,7 @@
-import Exceptions.InvalidEmailFormatException;
-import Exceptions.InvalidPasswordFormatException;
-import Exceptions.InvalidUserException;
-import Exceptions.UserOtherThanTestException;
+import exceptions.InvalidEmailFormatException;
+import exceptions.InvalidPasswordFormatException;
+import exceptions.InvalidUserException;
+import exceptions.UserOtherThanTestException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
