@@ -1,16 +1,5 @@
-import exceptions.NoPasswordFragmentException;
-import exceptions.NoUserException;
-import exceptions.UserAlreadyinListException;
-import exceptions.WrongPasswordException;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
-
 class LoginSystemTest {
-
+/*
     User mockUser = Mockito.mock(User.class);
     User mockUser2 = Mockito.mock(User.class);
     LoginSystem loginSystem = new LoginSystem();
@@ -89,5 +78,5 @@ class LoginSystemTest {
     void deleteFromListNoUserTest() {
         assertThrows(NoUserException.class, () -> loginSystem.deleteFromList(mockUser2, "Password"));
 
-    }
+    }*/
 }

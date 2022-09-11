@@ -1,23 +1,18 @@
-import exceptions.InvalidEmailFormatException;
-import exceptions.InvalidPasswordFormatException;
-import exceptions.InvalidUserException;
-import exceptions.UserOtherThanTestException;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+package user;
+
+import exceptions.*;
 
 import java.util.logging.Logger;
 
 
-@Getter
-@Setter
-@AllArgsConstructor
-public class User {
-    private final Logger logger = Logger.getLogger(User.class.getName());
-    private String username;
-    private String password;
-    private String email;
+public class UserService {
 
+    private final UserDaoImplInMemory userDao;
+    private final Logger logger = Logger.getLogger(User.class.getName());
+
+    public UserService(UserDaoImplInMemory userDao) {
+        this.userDao = userDao;
+    }
 
     private void checkEmail(String email) throws InvalidEmailFormatException {
         if (!(email.contains("@") && email.contains(".com")))
@@ -33,17 +28,17 @@ public class User {
     }
 
     private void checkUsername(String username) throws UserOtherThanTestException {
-        if (!username.contains("Test"))
-            throw new UserOtherThanTestException("You tried adding a user whose name is not Test");
-
+        if (username.matches("^[_A-z0-9]*((-|\s)*[_A-z0-9])*$")) {
+            throw new UserOtherThanTestException("Username cannot have any special characters and must be atleast 6 characters long");
+        }
     }
 
-    public boolean isValidUser() {
+    public boolean isValidUser(User user) {
         try {
             try {
-                checkEmail(getEmail());
-                checkPassword(getPassword());
-                checkUsername(getUsername());
+                checkEmail(user.getEmail());
+                checkPassword(user.getPassword());
+                checkUsername(user.getUsername());
                 System.out.println("User is valid");
                 return true;
             } catch (InvalidPasswordFormatException | UserOtherThanTestException |
@@ -58,4 +53,24 @@ public class User {
         return false;
     }
 
+    public boolean login(String username, String password) throws NoUserException {
+        for (User user : userDao.getAll()) {
+            if (username.equals(user.getUsername())) {
+                if (isPasswordMatching(user.getPassword(), password)) {
+                    User userReturn = userDao.getById(user.getId());
+                    System.out.println("Logged in");
+                    return true;
+                } else {
+                    System.out.println("Wrong Password");
+                    return false;
+                }
+            }
+        }
+        throw new NoUserException("User not in List");
+    }
+
+
+    private boolean isPasswordMatching(String passwordOriginal, String passwordProvided) {
+        return passwordOriginal.equals(passwordProvided);
+    }
 }

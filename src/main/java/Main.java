@@ -1,13 +1,14 @@
-import exceptions.NoPasswordFragmentException;
-import exceptions.NoUserException;
-import exceptions.WrongPasswordException;
-
-import java.util.logging.Logger;
+import webapp.Client;
 
 public class Main {
     public static void main(String[] args) {
 
+        Client client = new Client();
+
+
+/*
         LoginSystem loginSystem = new LoginSystem();
+        UserService userService = new UserService();
         Logger logger = Logger.getLogger(Main.class.getName());
         User userGood = new User("Test", "PSsrw12@", "Test@Test.com");
         User userInvalidPW = new User("Test", "P@", "Test@Test.com");
@@ -15,7 +16,7 @@ public class Main {
         User userInvalidUser = new User("Zed", "PSsrw12@", "Test@Test.com");
 
 
-        userInvalidPW.isValidUser();
+        userService.isValidUser(userInvalidPW);
         userInvalidEmail.isValidUser();
         userInvalidUser.isValidUser();
         loginSystem.userList.add(userInvalidUser);
@@ -45,7 +46,7 @@ public class Main {
             logger.warning(exception.getMessage());
             logger.info(loginSystem.userList.toString());
         }
-
+*/
 
     }
 }
