@@ -28,7 +28,7 @@ public class UserService {
     }
 
     private void checkUsername(String username) throws UserOtherThanTestException {
-        if (username.matches("^[_A-z0-9]*((-|\s)*[_A-z0-9])*$")) {
+        if (username.matches("^[_A-z0-9]*$")) {
             throw new UserOtherThanTestException("Username cannot have any special characters and must be atleast 6 characters long");
         }
     }
