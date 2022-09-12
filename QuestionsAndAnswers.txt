@@ -1,0 +1,13 @@
+1.	Create a java - maven project (hello world). 
+2.	Add some dependencies. 
+3.	Add two child projects
+4.	Add some dependencies to them.
+5.	Specify version using dependency management
+6.	Specify some plugins
+7.	Build all of the projects using one command in such a way that it is stored in .m2
+a.	Which command should you use?	mvn install
+b.	Which command should you use if you only want to execute tests? mvn test
+c.	Where is the jar file stored? C:\Users\username\.m2\repository\com\tutoring\helloWorldApp
+8.	Upgrade the version of all projects (change it only in 1 place). ${global.version}
+9.	Re-build the projects (same as in step 7.)
+a.	How are jars called now? *appname**version* example: childAppTwo-1.1-Upgrade
