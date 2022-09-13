@@ -28,7 +28,7 @@
     <spring.version>4.3.5.RELEASE</spring.version>
     <global.version>1.1-Upgrade</global.version>
   </properties>
-
+<dependencyManagement>
   <dependencies>
 
 
@@ -47,7 +47,7 @@
     </dependency>
 
   </dependencies>
-
+</dependencyManagement>
   <build>
    <outputDirectory>target/classes</outputDirectory>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
