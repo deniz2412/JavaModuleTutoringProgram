@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class BaloonSolution {
 
-
     public int solution(String s) {
         int b = 0, a = 0, l = 0, o = 0, n = 0;
 
